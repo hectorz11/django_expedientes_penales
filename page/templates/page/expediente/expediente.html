@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<center>
+    <div class="input-prepend input-append" align="center">
+        <div class="busqueda">
+            <form class="navbar-search pull-left" method="POST" action="{% url 'page:expediente_buscar' %}"> {% csrf_token %}
+                <select name="opcion">
+                    <option value="1">Nro. Instrucción</option>
+                    <option value="2">Nro. Expediente</option>
+                    <option value="3">Agraviado</option>
+                    <option value="4">Inculpado</option>
+                    <option value="5">Materia</option>
+                    <option value="6">Legajo</option>
+                </select>
+                <input type="text" name="buscalo" class="search-query" placeholder="Buscar">
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit"><i class="icon-white icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</center>
+
+<table class="table" border="1" align="center">
+    <tr>
+        <td width=4%><b>Reg.</b></td>
+        <td widht=5%><b>Instruc.</b></td>
+        <td width=5%><b>Exped.</b></td>
+        <td width=5%><b>Año</b></td>
+        <td width=6%><b>Juzgado</b></td>
+        <td width=19%><b>Agraviado</b></td>
+        <td width=19%><b>Inculpado</b></td>
+        <td width=15%><b>Materia</b></td>
+        <td width=5%><b>Fojas</b></td>
+        <td width=5%><b>Legajo</b></td>
+        <td width=6%><b>Editar</b></td>
+        <td width=6%><b>Borrar</b></td>
+    </tr>    
+    {% for expediente in expedientes %}
+    <tr>
+        <td>{{ expediente.id }}</td>
+        <td>{{ expediente.nro_instruccion }}</td>
+        <td>{{ expediente.nro_expediente }}</td>
+        <td>{{ expediente.anio }}</td>
+        <td>{{ expediente.juzgado }}</td>
+        <td>{{ expediente.agraviado }}</td>
+        <td>{{ expediente.inculpado }}</td>
+        <td>{{ expediente.materia }}</td>
+        <td>{{ expediente.nro_fojas }}</td>
+        <td>{{ expediente.nro_legajo }}</td>
+        <td><a href="{% url 'page:expediente_update' expediente.id %}" class='btn btn-mini tn btn-warning'><i class='icon-edit icon-white'></i> Editar</a></td>
+        <td><a href="{% url 'page:expediente_delete' expediente.id %}" class='btn btn-mini tn btn-danger'><i class='icon-remove icon-white'></i> Eliminar</a></td>
+    </tr>
+    {% endfor %}
+</table>
+<div class="pagination">
+    <span class="step-links">
+        {% if expedientes.has_previous %}
+            <a href="?page={{ expedientes.previous_page_number }}">Previo</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ expedientes.number }} de {{ expedientes.paginator.num_pages }}.
+        </span>
+
+        {% if expedientes.has_next %}
+            <a href="?page={{ expedientes.next_page_number }}">Siguiente</a>
+        {% endif %}
+    </span>
+</div>
+<script>$("tr:odd").css("background-color", "#bbbbff");</script>
+
+<div class="form-actions" align="center">
+    <a href="{% url 'page:expediente_create'%}" class="btn btn-large btn-primary" name="ingresar"></i> Ingresar Nuevo Registro</a> 
+    <a href="{% url 'page:index' %}" class="btn btn-large tn btn-danger"><i class="icon-home icon-white"></i> Regresar al Menu Principal</a>
+</div>
+{% endblock %}

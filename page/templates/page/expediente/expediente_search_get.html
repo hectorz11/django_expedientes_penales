@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="hero-unit">
+<h1><center>¿Qué desea buscar?</center></h1><br><br>
+	<center>
+        <div class="input-prepend input-append" align="center">
+            <div class="busqueda">
+            <form class="navbar-search pull-left" method="POST" action="{% url 'page:expediente_buscar' %}"> {% csrf_token %}
+            	<select name="opcion">
+                    <option value="1">Nro. Instrucción</option>
+                    <option value="2">Nro. Expediente</option>
+                    <option value="3">Agraviado</option>
+                    <option value="4">Inculpado</option>
+                    <option value="5">Materia</option>
+                    <option value="6">Legajo</option>
+                </select>
+                <input type="text" name="buscalo" class="search-query" placeholder="Buscar">
+                <div class="btn-group">
+                    <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                </div>
+            </form>
+            </div>
+    	</div><br><br>
+	    <a href="{% url 'page:index' %}" type="button" class="btn btn-large tn btn-danger"><i class='icon-home icon-white'></i> Regresar al Menú Principal</a> 
+	</center> 
+</div>
+{% endblock %}

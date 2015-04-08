@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="hero-unit">
+ 	<h1 align="center">Catálogo de Expedientes Penales</h1><br>
+ 	<h4 align="center">¿Qué desea hacer?</h4>
+  	<br>
+  	<!--LISTA DE PESTAÑAS DE LA TABLITA :D-->
+	<div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+	 	<div class="tab-content">
+	    	<div class="tab-pane active" id="tab1">
+	      		<div align="center">
+					<a class="btn btn-success btn-large" href="{% url 'page:expediente_create' %}"><i class="icon-pencil icon-white"></i> Ingresar Expediente</a>
+					<a class="btn btn-primary btn-large" href="{% url 'page:expediente' %}"><i class="icon-search icon-white"></i> Consultar Expedientes</a>
+					<a class="btn btn-inverse btn-large" href="{% url 'page:expediente_search' %}"><i class="icon-search icon-white"></i> Buscar Expedientes</a>
+					<a class="btn btn-danger btn-large" href="#"><i class="icon-search icon-white"></i> Reporte Completo de Expedientes</a>
+				</div>
+	    	</div>
+	  	</div>
+	</div>
+</div>
+{% endblock %}

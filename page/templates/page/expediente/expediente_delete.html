@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+	<form action="" method="post">{% csrf_token %}
+	    <h3>Desea Elimiar : "El expediente {{ object.nro_expediente }} - agraviado {{ object.agraviado }} e inculpado {{ object.inculpado }}."</h3>
+	    <input class="btn btn-large btn-primary" type="submit" value="Confirmar">
+	    <a href="{% url 'page:expediente' %}" class="btn btn-large btn-danger">Cancelar</a>
+	</form>
+</div>
+{% endblock %}

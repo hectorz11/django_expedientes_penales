@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container">
+	<form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+		<table class="table table-striped">
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_nro_instruccion">Nro Instruccion: </label>
+				{{ form.nro_instruccion }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_nro_expediente">Nro Expediente: </label>
+				{{ form.nro_expediente }}
+			</div></td>
+			<td><div class="text-xlarge" id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_anio">Año:</label>
+				{{ form.anio }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_juzgado">Juzgado: </label>
+				{{ form.juzgado }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_agraviado">Agraviado: </label>
+				{{ form.agraviado }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_inculpado">Inculpado: </label>
+				{{ form.inculpado }}
+			</div></td>
+		</tr>
+		<tr>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_materia">Materia: </label>
+				{{ form.materia }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_nro_fojas">Nro Fojas :</label>
+				{{ form.nro_fojas }}
+			</div></td>
+			<td><div id="clearfix">
+				{{ form.suject.errors }}
+				<label id="id_nro_legajo">Nro Legajo: </label>
+				{{ form.nro_legajo }}
+			</div></td>
+		</tr>
+		</table>
+	    <input class="btn btn-large btn-primary" type="submit" value="Confirmar" />
+	    <a href="{% url 'page:index' %}" class="btn btn-large btn-danger">Cancelar</a>
+	</form>
+</div>
+{% endblock %}
